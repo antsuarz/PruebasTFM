@@ -1,4 +1,4 @@
-from feat import Detector
+from feat import Detector 
 import matplotlib.pyplot as plt
 
 detector = Detector()
@@ -8,7 +8,7 @@ img_path = [f"./img/{emotion}.jpg"]
 fex_result = detector.detect_image(img_path)
 
 action_units = fex_result.aus
-
+ 
 print(action_units)
 print(fex_result.emotions)
 
