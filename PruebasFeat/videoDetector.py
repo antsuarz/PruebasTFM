@@ -23,6 +23,9 @@ def plot_action_units_mean(video_prediction, video_id):
     plt.savefig(f"./outputs/{video_id}_mean_au_plot.png", bbox_inches='tight')
     plt.show()
 
+    mean_action_units.to_csv(f"./csv_outputs/{video_id}_mean_au.csv", index=True)
+    plt.close()
+
 def main():
     video_id = input("Video a analizar: ")
     video_path = f"./video/{video_id}.mp4"
