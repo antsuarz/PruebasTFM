@@ -1,5 +1,6 @@
 from feat import Detector
 import matplotlib.pyplot as plt
+import os
 
 frames_to_skip = 30.0
 
@@ -27,14 +28,17 @@ def plot_action_units_mean(video_prediction, video_id):
     plt.close()
 
 def main():
-    video_id = input("Video a analizar: ")
-    video_path = f"./video/{video_id}.mp4"
+    for file_name in os.listdir("./video"):
+        if "-converted" in file_name and file_name.endswith(".mp4"):
+            video_path = os.path.join("./video", file_name)
 
-    print(video_path)
-    prediction = detect_video(video_path, frames_to_skip)
-    print(prediction.shape)
+            print("-------------------------------------------")
+            print(f"Video: {video_path}")
+            video = detect_video(video_path, frames_to_skip)
+            print(video.shape)
 
-    plot_action_units_mean(prediction, video_id)
+            plot_action_units_mean(video, file_name)
+            print("-------------------------------------------")
 
 
 if __name__ == "__main__":
