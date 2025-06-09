@@ -2,7 +2,7 @@ from feat import Detector
 import matplotlib.pyplot as plt
 import os
 
-frames_to_skip = 30.0
+frames_to_skip = None
 
 def detect_video(video_path, skip_frames):
     detector = Detector()
@@ -34,10 +34,10 @@ def main():
 
             print("-------------------------------------------")
             print(f"Video: {video_path}")
-            video = detect_video(video_path, frames_to_skip)
-            print(video.shape)
+            video_prediction = detect_video(video_path, frames_to_skip)
+            print(video_prediction.shape)
 
-            plot_action_units_mean(video, file_name)
+            plot_action_units_mean(video_prediction, file_name)
             print("-------------------------------------------")
 
 
